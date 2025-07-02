@@ -1,0 +1,44 @@
+{% extends 'app.html.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+    <h3>Produit</h3>
+    <div style="width: 100%; text-align: right; margin: 15px 0">
+        <a class="btn info" href="{{ path('export_product_csv') }}">Export en CSV</a>
+        <a class="btn primary" href="{{ path('app_product_new') }}">Nouveau</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom du produit</th>
+                <th>Prix d'achat</th>
+                <th>Prix de vente</th>
+                <th>Marge</th>
+                <th>Stock</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products|reverse %}
+            <tr>
+                <td>{{ product['product'].name }}</td>
+                <td>{{ product['product'].purchasePrice }}</td>
+                <td>{{ product['product'].sellingPrice }}</td>
+                <td>{{ product['product'].sellingPrice - product['product'].purchasePrice }}</td>
+                <td>{{ product['stock'].quantity }}</td>
+                <td>
+                    <a href="{{ path('app_product_show', {'id': product['product'].id}) }}">Voir</a>
+                    <a href="{{ path('app_product_edit', {'id': product['product'].id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

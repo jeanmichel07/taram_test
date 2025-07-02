@@ -1,0 +1,35 @@
+{% extends 'app.html.twig' %}
+
+{% block title %}PurchaseCondition index{% endblock %}
+
+{% block body %}
+    <h1>Conditions d'achat</h1>
+            <div style="width: 100%; text-align: right; margin: 15px 0">
+            <a class="btn primary" href="{{ path('app_purchase_condition_new') }}">Nouveau</a>
+        </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fournisseur</th>
+                <th>Produit</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for purchase_condition in purchase_conditions %}
+            <tr>
+                <td>{{ purchase_condition.provider != null ? purchase_condition.provider.name : "" }}</td>
+                <td>{{ purchase_condition.product != null ? purchase_condition.product.name : "" }}</td>
+                <td>
+                    <a href="{{ path('app_purchase_condition_show', {'id': purchase_condition.id}) }}">Voir</a>
+                    <a href="{{ path('app_purchase_condition_edit', {'id': purchase_condition.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Pas de données</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

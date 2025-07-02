@@ -1,0 +1,13 @@
+{% extends 'app.html.twig' %}
+
+{% block title %}Edit PurchaseCondition{% endblock %}
+
+{% block body %}
+    <h1>Edit PurchaseCondition</h1>
+
+    {{ include('purchase_condition/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_purchase_condition_index') }}">back to list</a>
+
+    {{ include('purchase_condition/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'app.html.twig' %}
+
+{% block title %}PurchaseCondition{% endblock %}
+
+{% block body %}
+    <h1>Condition d'achat du {{ purchase_condition.provider.name }} pour {{ purchase_condition.product.name }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Price</th>
+                <td>{{ purchase_condition.price }}</td>
+            </tr>
+            <tr>
+                <th>Delai de livraison</th>
+                <td>{{ purchase_condition.deliveryTime }}</td>
+            </tr>
+            <tr>
+                <th>Quantité minimum</th>
+                <td>{{ purchase_condition.minQuantity }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_purchase_condition_index') }}">Retour à la liste</a>
+
+    <a href="{{ path('app_purchase_condition_edit', {'id': purchase_condition.id}) }}">Modifier</a>
+
+    {{ include('purchase_condition/_delete_form.html.twig') }}
+{% endblock %}

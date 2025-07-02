@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+          <!-- Sidebar for navigation -->
+        <div class="sidebar">
+            <div class="logo-details">
+            <!-- Icon and logo name -->
+            <i class='bx bxl-c-plus-plus icon'></i>
+            <div class="logo_name">Taram-G</div>
+            <i class='bx bx-menu' id="btn"></i> <!-- Menu button to toggle sidebar -->
+            </div>
+            <ul class="nav-list">
+            <!-- Search bar -->
+            <li>
+                <i class='bx bx-search'></i>
+                <input type="text" placeholder="Search...">
+                <span class="tooltip">Search</span>
+            </li>
+            <li>
+                <a href="{{ path('app_dashboard') }}">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Dashboard</span>
+                </a>
+                <span class="tooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="{{ path('index_purchase') }}">
+                <i class='bx bx-cart-alt'></i>
+                <span class="links_name">Achats</span>
+                </a>
+                <span class="tooltip">Achats</span>
+            </li>
+            <li>
+                <a href="{{ path('app_product_index') }}">
+                <i class='bx bx-list-ul'></i>
+                <span class="links_name">Produits</span>
+                </a>
+                <span class="tooltip">Produits</span>
+            </li>
+                        <li>
+                <a href="{{ path('app_provider_index') }}">
+                <i class='bx bx-group'></i>
+                <span class="links_name">Fournisseur</span>
+                </a>
+                <span class="tooltip">Fournisseur</span>
+            </li>
+            <li>
+                <a href="{{ path('app_purchase_condition_index') }}">
+                <i class='bx bx-note'></i>
+                <span class="links_name">Conditions d'achat</span>
+                </a>
+                <span class="tooltip">Conditions d'achat</span>
+            </li>
+            <!-- Profile section -->
+            <li class="profile">
+                <div class="profile-details">
+                <!--<img src="profile.jpg" alt="profileImg">-->
+                <div class="name_job">
+                    <div class="name">PIXEL PERFECT</div>
+                    <div class="job">@PixelPerfectLabs</div>
+                </div>
+                </div>
+                <a href="{{ path('app_logout') }}"><i class='bx bx-log-out' id="log_out"></i></a> <!-- Logout icon -->
+            </li>
+            </ul>
+        </div>
+         <!-- Main content area -->
+        <section class="home-section">
+            {% block body %}{% endblock %}
+        </section>
+    </body>
+</html>

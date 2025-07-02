@@ -1,0 +1,24 @@
+{% extends 'app.html.twig' %}
+
+{% block title %}Achat{% endblock %}
+
+{% block body %}
+        <h3>New Achat</h3>
+
+        {{ form_start(form, {'attr': {'class': 'form'}}) }}
+        <div class="form-group">
+            {{ form_label(form.provider, 'Fornisseur') }}
+            {{ form_widget(form.provider, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.provider) }}
+        </div>
+        <br/>
+        <div class="form-group">
+            {{ form_label(form.csvFile, 'Fichier CSV') }}
+            {{ form_widget(form.csvFile, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.csvFile) }}
+        </div>
+        <br/>
+        {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+        {{ form_rest(form) }} {# Rend les champs non spécifiés, comme _token #}
+        {{ form_end(form) }}
+{% endblock %}
