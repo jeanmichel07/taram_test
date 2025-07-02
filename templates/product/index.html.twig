@@ -26,7 +26,7 @@
                 <td>{{ product['product'].purchasePrice }}</td>
                 <td>{{ product['product'].sellingPrice }}</td>
                 <td>{{ product['product'].sellingPrice - product['product'].purchasePrice }}</td>
-                <td>{{ product['stock'].quantity }}</td>
+                <td>{{ product['stock'] != null ? product['stock'].quantity : 0 }}</td>
                 <td>
                     <a href="{{ path('app_product_show', {'id': product['product'].id}) }}">Voir</a>
                     <a href="{{ path('app_product_edit', {'id': product['product'].id}) }}">Modifier</a>

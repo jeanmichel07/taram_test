@@ -1,4 +1,29 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'class': 'form'}}) }}
+        <div class="form-group">
+            {{ form_label(form.name, 'Nom du produit') }}<br/>
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}<br/>
+            {{ form_errors(form.name) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.description, 'Déscription') }}<br/>
+            {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}<br/>
+            {{ form_errors(form.description) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.purchasePrice, 'Prix d\'achat') }}<br/>
+            {{ form_widget(form.purchasePrice, {'attr': {'class': 'form-control'}}) }}<br/>
+            {{ form_errors(form.purchasePrice) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.sellingPrice, 'Prix de vente') }}<br/>
+            {{ form_widget(form.sellingPrice, {'attr': {'class': 'form-control'}}) }}<br/>
+            {{ form_errors(form.sellingPrice) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.quantity, 'Quantité en stock') }}<br/>
+            {{ form_widget(form.quantity, {'attr': {'class': 'form-control'}}) }}<br/>
+            {{ form_errors(form.quantity) }}
+        </div>
+        <br/>
+    <button class="btn">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

@@ -107,11 +107,18 @@ final class PurchaseController extends AbstractController
                 if($product != null) {
                     $stock = $this->stockRepository->findOneBy(["product"=>$product]);
 
-                    $stock->setQuantity($stock->getQuantity()+$row['Quantity']);
-                    $stock->setUpdatedAt(new DateTimeImmutable());
-                    $entityManager->persist($stock);
+                    if($stock != null){
+                        $stock->setQuantity($stock->getQuantity()+$row['Quantity']);
+                        $stock->setUpdatedAt(new DateTimeImmutable());
+                        $entityManager->persist($stock);
+                    }else {
+                        $stock = new Stock();
+                        $stock->setProduct($product);
+                        $stock->setQuantity($stock->getQuantity()+$row['Quantity']);
+                        $stock->setUpdatedAt(new DateTimeImmutable());
+                        $entityManager->persist($stock);
+                    }
                 }
-                
             }
             $purchase->setTotalAmount($totalAmount);
             $entityManager->persist($purchase);
