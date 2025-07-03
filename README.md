@@ -35,6 +35,10 @@ Avant de commencer, assurez-vous d'avoir les outils suivants installés :
     *symfony server:start*
     **Accédez au projet sur http://localhost:8000**
 
+6. Info login
+    **username:** admin25
+    **mdp:** admin2025!
+
 
 ## Utilisation
 ## Créer un nouvel achat
